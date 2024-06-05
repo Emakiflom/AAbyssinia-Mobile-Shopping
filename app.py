@@ -37,14 +37,14 @@ def generate_random_combination():
 
 @app.route('/')
 def home():
-    # if 'username' in session:
-    #     return render_template('index.html', username=session['username'])
-    # else:
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM item")
-    data = cur.fetchall()
-    cur.close()
-    return render_template('index.html', data=data)
+    if 'username' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM item")
+        data = cur.fetchall()
+        cur.close()
+        return render_template('index.html', data=data)
+    else:
+        return render_template('login.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -53,7 +53,7 @@ def login():
         username = request.form['username']
         pwd = request.form['password']
         cur = mysql.connection.cursor()
-        cur.execute(f"select username, password from tbl_users where username = '{username}'")
+        cur.execute(f"select email, password from users where email = '{username}'")
         user = cur.fetchone()
         cur.close()
         if user and pwd == user[1]:

@@ -81,40 +81,17 @@
                     {% if error %}
                     <p style="color: red">{{ error }}</p>
                  {% endif %}
-                    <form method="POST" action="/register" enctype="multipart/form-data">
+                    <form method="POST" action="/login" enctype="multipart/form-data">
 
                         <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input class="form-control" type="text" id="name" name="name" required><br><br>
+                        <label for="username">username:</label>
+                        <input class="form-control" type="text" id="username" name="username" required><br><br>
                         </div>
                         <div class="form-group">
-                            <label for="price">price:</label>
-                            <input class="form-control" type="text" id="price" name="price" required><br><br>
+                            <label for="Password">Password:</label>
+                            <input class="form-control" type="text" id="password" name="password" required><br><br>
                             </div>
-                            <div class="form-group">
-                                <label for="category">category:</label>
-                            
-                                <select class="form-control" name="category">
-
-                                    <option>Mobile</option>
-                                    <option>Tablet</option>
-                                    <option>PC</option>
-                                    <option>Game Console</option>
-
-                                </select>
-                            
-                            
-                            </div>
-                                <div class="form-group">
-                                    <label for="image">Image:</label>
-                                    <input class="form-control" type="file" id="image" name="image" required><br><br>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="detail">Deatil:</label>
-                                    <textarea class="form-control" name="detail">
-                                    </textarea>    
-                                    </div>
-                        <input class="view" type="submit" value="Register" name="register">
+                        <input class="view" type="submit" value="login" name="login">
                 
                     </form>
 
