@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport" 
+          content="width=device-width, 
+                   initial-scale=1.0">
+    <title>Absinia Shopping</title>
+    <link rel="stylesheet" 
+          href="{{ url_for('static', filename='style.css') }}">
+          <link rel="stylesheet" 
+          href="{{ url_for('static', filename='responsive.css') }}">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<style>
+    .nav{
+        background: #5F4C4C;
+    }
+</style>
+
+<body>
+    <!-- for header part -->
+    <header>
+
+        <div class="logosec">
+            <div class="logo">Absiniya Shopping</div>
+            <img src=
+"{{ url_for('static', filename='images/bar.png') }}"
+                class="icn menuicn" 
+                id="menuicn" 
+                alt="menu-icon">
+        </div>
+        </div>
+
+    </header>
+
+
+
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <a href="/">
+                        <div class="nav-option option1">
+                            <img src=
+    "{{ url_for('static', filename='images/item.png') }}"
+                                class="nav-img" 
+                                alt="dashboard">
+                            <h3> Items</h3>
+                        </div>
+    
+                       </a>
+                    <div class="nav-option logout">
+                        <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png"
+                            class="nav-img" 
+                            alt="logout">
+                        <h3>Logout</h3>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+
+       
+
+
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Product Lists</h1>
+                    <a href="/register"><button class="view">Add Item</button></a>
+                </div>
+
+                <div class="report-body">
+                    {% if error %}
+                    <p style="color: red">{{ error }}</p>
+                 {% endif %}
+                    <form method="POST" action="/edit" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="item_id" hidden value="{{ item[0] }}" id="">
+                        <input type="text" name="image_url" hidden value="{{ item[4] }}" id="">
+                        <input class="form-control" value="{{ item[1] }}"  type="text" id="name" name="name" required><br><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">price:</label>
+                            <input class="form-control" value="{{ item[2] }}" type="text" id="price" name="price" required><br><br>
+                            </div>
+                            <div class="form-group">
+                                <label for="category">category:</label>
+                            
+                                <select class="form-control" name="category">
+
+                                    <option>{{ item[3] }}</option>
+                                    <option>Mobile</option>
+                                    <option>Tablet</option>
+                                    <option>PC</option>
+                                    <option>Game Console</option>
+
+                                </select>
+                            
+                            
+                            </div>
+                                <div class="form-group">
+                                    <label for="image">Image:</label>
+                                    <input class="form-control" type="file" id="image" name="image"><br><br>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="detail">Deatil:</label>
+                                    <textarea class="form-control" name="detail">
+                                        {{ item[5] }}
+                                    </textarea>    
+                                    </div>
+                        <input class="view" type="submit" value="Edit Item" name="edit_item">
+                
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    
+</body>
+</html>
